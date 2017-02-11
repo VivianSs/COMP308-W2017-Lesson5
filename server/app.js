@@ -5,15 +5,14 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
-// import "mongoose"
+// import "mongoose" NPM module
 let mongoose = require('mongoose');
 
-// URI
-let URI = "mongodb://localhost/videogames";
+// import the config module
+let config = require('./config/db');
 
-//let URI = "mongodb://thomas:123456@ds054999.mlab.com:54999/videogames";
-
-mongoose.connect(URI);
+//connect to the mongdb with the URI above
+mongoose.connect(config.URI);
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
