@@ -12,9 +12,13 @@ let mongoose = require('mongoose');
 let config = require('./config/db');
 
 //connect to the mongdb with the URI above
-mongoose.connect(config.URI);
+ mongoose.connect(config.URI);
+//mongoose.connect(process.env.PORT || config.URI);
 
+// create a db object and make a reference to the connection
 let db = mongoose.connection;
+
+// listen for a successful connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log("Conneced to MongoDB...");
