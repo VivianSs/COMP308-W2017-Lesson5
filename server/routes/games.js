@@ -10,19 +10,24 @@ let mongoose = require('mongoose');
 // games collection
 let game = require('../models/games');
 
-/* GET home page. wildcard */
+/* GET main games page. */
 router.get('/', (req, res, next) => {
-  res.render('content/index', {
-    title: 'Home'
-   });
+  // find all games in the games collection
+
+  game.find((err, games) => {
+
+    if (err) {
+      return console.error(err);
+    }
+    else {
+      res.render('content/gamelist', {
+        title: 'Games',
+        games: games
+      });
+    }
+  });
 });
 
 
-/* GET contact page. */
-router.get('/contact', (req, res, next) => {
-  res.render('content/contact', {
-    title: 'Contact'
-   });
-});
 
 module.exports = router;
