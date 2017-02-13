@@ -13,7 +13,7 @@ let config = require('./config/db');
 
 //connect to the mongdb with the URI above
 // mongoose.connect(config.URI);
-mongoose.connect(process.env.PORT || config.URI);
+mongoose.connect(process.env.URI || config.URI);
 
 // create a db object and make a reference to the connection
 let db = mongoose.connection;
